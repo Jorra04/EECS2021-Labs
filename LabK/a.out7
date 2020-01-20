@@ -1,0 +1,64 @@
+#! /cs/local/bin/vvp
+:ivl_version "10.0 (stable)" "(v10_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xb8f920 .scope module, "labk" "labk" 2 1;
+ .timescale 0 0;
+L_0xbd46c0 .functor NOT 1, v0xbd41e0_0, C4<0>, C4<0>, C4<0>;
+L_0xbd4780 .functor AND 1, L_0xbd46c0, v0xb8faa0_0, C4<1>, C4<1>;
+L_0xbd4870 .functor AND 1, v0xbd41e0_0, v0xbd4120_0, C4<1>, C4<1>;
+L_0xbd4960 .functor OR 1, L_0xbd4780, L_0xbd4870, C4<0>, C4<0>;
+v0xb8faa0_0 .var "a", 0 0;
+v0xbd4120_0 .var "b", 0 0;
+v0xbd41e0_0 .var "c", 0 0;
+v0xbd42b0_0 .net "firstAnd", 0 0, L_0xbd4780;  1 drivers
+v0xbd4370_0 .var "flag", 0 0;
+v0xbd4480_0 .net "notOutput", 0 0, L_0xbd46c0;  1 drivers
+v0xbd4540_0 .net "orFinal", 0 0, L_0xbd4960;  1 drivers
+v0xbd4600_0 .net "secondAnd", 0 0, L_0xbd4870;  1 drivers
+    .scope S_0xb8f920;
+T_0 ;
+    %vpi_func 2 13 "$value$plusargs" 32, "a=%b", v0xb8faa0_0 {0 0 0};
+    %pad/u 1;
+    %store/vec4 v0xbd4370_0, 0, 1;
+    %load/vec4 v0xbd4370_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.0, 6;
+    %vpi_call 2 16 "$display", "not a valid argument." {0 0 0};
+    %vpi_call 2 17 "$finish" {0 0 0};
+T_0.0 ;
+    %vpi_func 2 20 "$value$plusargs" 32, "b=%b", v0xbd4120_0 {0 0 0};
+    %pad/u 1;
+    %store/vec4 v0xbd4370_0, 0, 1;
+    %load/vec4 v0xbd4370_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.2, 6;
+    %vpi_call 2 23 "$display", "not a valid arguemnt." {0 0 0};
+    %vpi_call 2 24 "$finish" {0 0 0};
+T_0.2 ;
+    %vpi_func 2 27 "$value$plusargs" 32, "c=%b", v0xbd41e0_0 {0 0 0};
+    %pad/u 1;
+    %store/vec4 v0xbd4370_0, 0, 1;
+    %load/vec4 v0xbd4370_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.4, 6;
+    %vpi_call 2 30 "$display", "not a valid arguemnt." {0 0 0};
+    %vpi_call 2 31 "$finish" {0 0 0};
+T_0.4 ;
+    %delay 1, 0;
+    %vpi_call 2 35 "$display", "a=%b b=%b c=%b z=%b flag=%b", v0xb8faa0_0, v0xbd4120_0, v0xbd41e0_0, v0xbd4540_0, v0xbd4370_0 {0 0 0};
+    %vpi_call 2 36 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "LabK7.v";
